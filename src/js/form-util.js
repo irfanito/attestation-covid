@@ -154,7 +154,7 @@ export function prepareInputs (formInputs, reasonInputs, reasonFieldset, reasonA
 
   jquery('[id^=radio-]').on('click', (event) => {
     const person = window.location.href.match(URL_PATTERN)[1]
-    const move = jquery(event.target).prop('id').split('-').reverse()[0]
+    const move = jquery(event.target).val()
     applyPersonMove(person, move)
   })
 }
@@ -165,7 +165,7 @@ function applyPersonMove (person, move) {
   jquery('#field-firstname').val(moveData.persons[person].firstname)
   jquery('#field-lastname').val(moveData.persons[person].lastname)
   jquery('#field-birthday').val(moveData.persons[person].birthday)
-  jquery('#field-placeofbirth').val(moveData.persons[person].placeofbirth)
+  jquery('#field-placeofbirtnh').val(moveData.persons[person].placeofbirth)
   jquery('#field-address').val(moveData.persons[person].address)
   jquery('#field-city').val(moveData.persons[person].city)
   jquery('#field-zipcode').val(moveData.persons[person].zipcode)

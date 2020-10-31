@@ -5,15 +5,15 @@
       "type": "list",
       "items": [
         {
-          "code": "ecole",
+          "code": "enfants",
           "label": "Ecole"
         },
         {
-          "code": "courses",
+          "code": "achats",
           "label": "Courses"
         },
         {
-          "code": "sport",
+          "code": "sport_animaux",
           "label": "Sport"
         }
       ]
