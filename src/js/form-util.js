@@ -171,7 +171,7 @@ function applyPersonMove (person, move) {
   jquery('#field-zipcode').val(moveData.persons[person].zipcode)
   jquery('#field-heuresortie').val(heuresortie)
   jquery('[id^=checkbox-]').prop('checked', false)
-  jquery('#checkbox-' + moveData.moves[move].reason).prop('checked', true)
+  jquery('#checkbox-' + move).prop('checked', true)
   jquery('#generate-btn').trigger('click')
 }
 
