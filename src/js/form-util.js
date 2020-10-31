@@ -35,7 +35,7 @@ const conditions = {
   },
 }
 
-const URL_PATTERN = /^https?:\/\/[^/]*\/([^/]*)\/([^/]*)/
+const URL_PATTERN = /^https?:\/\/[^/]*\/([^/]*)/
 
 function validateAriaFields () {
   return Object.keys(conditions)
@@ -153,17 +153,11 @@ export function prepareInputs (formInputs, reasonInputs, reasonFieldset, reasonA
   })
 
   jquery('[id^=radio-]').on('click', (event) => {
-    const idSplit = jquery(event.target).prop('id').split('-')
-    applyPersonMove(idSplit[1], idSplit[2])
+    const person = window.location.href.match(URL_PATTERN)[1]
+    const move = jquery(event.target).prop('id').split('-')[1]
+    applyPersonMove(person, move)
   })
 }
-
-jquery(document).ready(function() {
-  const hrefMatch = window.location.href.match(URL_PATTERN)
-  if (hrefMatch) {
-    applyPersonMove(hrefMatch[1], hrefMatch[2])
-  }
-})
 
 function applyPersonMove (person, move) {
   const heuresortie = new Date()

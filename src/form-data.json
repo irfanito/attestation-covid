@@ -5,28 +5,16 @@
       "type": "list",
       "items": [
         {
-          "code": "irfane-ecole",
-          "label": "Irfane école"
+          "code": "ecole",
+          "label": "Ecole"
         },
         {
-          "code": "irfane-courses",
-          "label": "Irfane courses"
+          "code": "courses",
+          "label": "Courses"
         },
         {
-          "code": "irfane-sport",
-          "label": "Irfane sport"
-        },
-        {
-          "code": "aicha-ecole",
-          "label": "Aïcha école"
-        },
-        {
-          "code": "aicha-courses",
-          "label": "Aïcha courses"
-        },
-        {
-          "code": "aicha-sport",
-          "label": "Aïcha sport"
+          "code": "sport",
+          "label": "Sport"
         }
       ]
     },
