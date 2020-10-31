@@ -11,7 +11,8 @@
 *.code-workspace
 .idea
 *.iml
-
+.github
+.firebase
 ### Linux ###
 *~
 
