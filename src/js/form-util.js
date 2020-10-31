@@ -165,7 +165,7 @@ function applyPersonMove (person, move) {
   jquery('#field-firstname').val(moveData.persons[person].firstname)
   jquery('#field-lastname').val(moveData.persons[person].lastname)
   jquery('#field-birthday').val(moveData.persons[person].birthday)
-  jquery('#field-placeofbirtnh').val(moveData.persons[person].placeofbirth)
+  jquery('#field-placeofbirth').val(moveData.persons[person].placeofbirth)
   jquery('#field-address').val(moveData.persons[person].address)
   jquery('#field-city').val(moveData.persons[person].city)
   jquery('#field-zipcode').val(moveData.persons[person].zipcode)
