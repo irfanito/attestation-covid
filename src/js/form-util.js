@@ -3,7 +3,7 @@ import { jquery } from './jquery.js'
 import { addSlash, getFormattedDate } from './util'
 import pdfBase from '../certificate.pdf'
 import { generatePdf } from './pdf-util'
-import moveData from '../move-data.json'
+import personData from '../person-data.json'
 
 const conditions = {
   '#field-firstname': {
@@ -162,13 +162,13 @@ export function prepareInputs (formInputs, reasonInputs, reasonFieldset, reasonA
 function applyPersonMove (person, move) {
   const heuresortie = new Date()
     .toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
-  jquery('#field-firstname').val(moveData.persons[person].firstname)
-  jquery('#field-lastname').val(moveData.persons[person].lastname)
-  jquery('#field-birthday').val(moveData.persons[person].birthday)
-  jquery('#field-placeofbirth').val(moveData.persons[person].placeofbirth)
-  jquery('#field-address').val(moveData.persons[person].address)
-  jquery('#field-city').val(moveData.persons[person].city)
-  jquery('#field-zipcode').val(moveData.persons[person].zipcode)
+  jquery('#field-firstname').val(personData[person].firstname)
+  jquery('#field-lastname').val(personData[person].lastname)
+  jquery('#field-birthday').val(personData[person].birthday)
+  jquery('#field-placeofbirth').val(personData[person].placeofbirth)
+  jquery('#field-address').val(personData[person].address)
+  jquery('#field-city').val(personData[person].city)
+  jquery('#field-zipcode').val(personData[person].zipcode)
   jquery('#field-heuresortie').val(heuresortie)
   jquery('[id^=checkbox-]').prop('checked', false)
   jquery('#checkbox-' + move).prop('checked', true)
