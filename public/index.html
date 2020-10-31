@@ -1,80 +1,114 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="msapplication-TileColor" content="#603cba">
+  <meta name="msapplication-config" content="./favicons/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="title" content="Générateur d'attestation de déplacement dérogatoire - COVID-19">
+  <meta name="description" content="Ce service officiel génère une version numérique de la déclaration de déplacement covid-19 à présenter aux forces de sécurité lors d’un contrôle.">
+  <meta name="keywords" content="covid19, covid-19, attestation, déclaration, déplacement, officielle, gouvernement">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="French">
+  <meta property="og:title" content="Générateur d'attestation de déplacement dérogatoire  - COVID-19" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:description" content="Ce service officiel génère une version numérique de la déclaration de déplacement covid-19 à présenter aux forces de sécurité lors d’un contrôle." />
+  <link rel="canonical" href="https://media.interieur.gouv.fr{{ PUBLIC_URL || '/deplacement-covid-19' }}" />
+  <meta property="og:url" content="https://media.interieur.gouv.fr{{ PUBLIC_URL || '/deplacement-covid-19' }}" />
+  <meta property="og:site_name" content="Générateur d'attestation de déplacement dérogatoire  - COVID-19" />
+  <script type='application/ld+json'>{"@context":"http://www.schema.org","@type":"GovernmentOrganization","name":"Générateur d'attestation de déplacement dérogatoire  - COVID-19","description":"Ce service officiel génère une version numérique de la déclaration de déplacement covid-19 à présenter aux forces de sécurité lors d’un contrôle.","address":{"@type":"PostalAddress","addressCountry":"France"}}</script>
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/8.0.0/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/8.0.0/firebase-auth.js"></script>
-    <script defer src="/__/firebase/8.0.0/firebase-database.js"></script>
-    <script defer src="/__/firebase/8.0.0/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/8.0.0/firebase-storage.js"></script>
-    <script defer src="/__/firebase/8.0.0/firebase-analytics.js"></script>
-    <script defer src="/__/firebase/8.0.0/firebase-remote-config.js"></script>
-    <script defer src="/__/firebase/8.0.0/firebase-performance.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
+  <link rel="manifest" href="./favicons/site.webmanifest">
+  <link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#21bf73">
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+  <title>Attestation de déplacement dérogatoire</title>
+</head>
+<body>
+<header role="banner" class="wrapper">
+  <picture>
+    <source srcset="/MIN_Interieur_RVB_dark.svg" media="(prefers-color-scheme: dark)">
+    <img src="/MIN_Interieur_RVB.svg" alt="Ministère de l'intérieur. Liberté, égalité, fraternité."
+         class="logo" role="presentation" aria-hidden="true">
+  </picture>
+
+  <div>
+    <h1 class="flex flex-wrap">
+                <span class="covid-title">
+                    COVID-19
+                </span>
+      <span class="covid-subtitle">
+                  Attestation de déplacement dérogatoire
+                </span>
+    </h1>
+    <p class="text-desc">
+      En application du décret n°2020-1310 du 29 octobre 2020 prescrivant les mesures générales
+      nécessaires pour faire face à l'épidémie de Covid19 dans le cadre de l'état d'urgence sanitaire
+    </p>
+
+  </div>
+</header>
+<main role="main">
+  <p
+    class="alert  alert-danger  d-none"
+    role="alert"
+    id="alert-facebook"
+  ></p>
+
+  <div class="wrapper">
+    <form id="form-profile" accept-charset="UTF-8"></form>
+    <p class="text-center mt-5">
+      <button type="button" id="generate-btn" class="btn btn-primary btn-attestation"><span ><i class="fa fa-file-pdf inline-block mr-1"></i>  Générer mon attestation</span></button>
+    </p>
+
+    <div class="bg-primary  d-none" id="snackbar">
+      L'attestation est téléchargée sur votre appareil.
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+  </div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+  <div id="footnotes">
+    <p id="footnote1">
+      [1] Les personnes souhaitant bénéficier de l'une de ces exceptions doivent se munir s'il y a lieu, lors de leurs déplacements hors de leur domicile, d'un document leur permettant de justifier que le déplacement considéré entre dans le champ de l'une de ces exceptions.
+    </p>
+    <p id="footnote2">
+      [2]  A utiliser par les travailleurs non salariés, lorsqu'ils ne peuvent disposer d'un justificatif de déplacement établi par leur employeur.
+    </p>
+    <p id="footnote3">
+      [3] Y compris les acquisitions à titre gratuit (distribution de denrées alimentaires...) et les déplacements liés à la perception de prestations sociales et au retrait d'espèces.
+    </p>
+  </div>
+  <p class="github">
+    Le code source de ce service est consultable sur <a href="https://github.com/LAB-MI/attestation-deplacement-derogatoire-q4-2020" class="github-link">GitHub</a>.
+  </p>
+  <p class="label-mi">
+    Ministère de l'Intérieur - DNUM - SDIT
+  </p>
+  <picture class="center">
+    <source srcset="/logo_dnum_dark.svg" media="(prefers-color-scheme: dark)">
+    <img class="center" src="/logo_dnum.svg" alt="logo dnum">
+  </picture>
+</main>
+<footer role="contentinfo" class="main-footer">
+  <div class="footer-links">
+    <a href="./confidentialite.html" title="Confidentialité - nouvelle page" target="_blank" class="footer-line footer-link">Confidentialité</a>
+    <a href="https://www.interieur.gouv.fr/Infos-du-site/Mentions-legales" title="Mentions légales - nouvelle page" target="_blank" class="footer-line footer-link">Mentions légales</a>
+    <a href="https://www.gouvernement.fr/info-coronavirus" title="Information du gouvernement sur le Covid-19 - nouvelle page" target="_blank" class="footer-line footer-link">Informations du gouvernement sur le Covid-19</a>
+    <div class="footer-line" >Plus d’infos au <a class="num-08" href="tel:0800130000" title="Numéro vert - appel gratuit depuis un poste fixe en France">0 800 130 000</a></div>
+    <p class="footer-line" id="version"></p>
+  </div>
+</footer>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
-    </script>
-  </body>
+<div class="alert  alert-info  d-none" id="update-alert">
+  Une nouvelle version est disponible. Cliquer sur le bouton pour l'obtenir.
+  <p class="text-right">
+    <button id="reload-btn" class="btn  btn-info">Mettre à jour</button>
+  </p>
+</div>
+
+<script src="./js/main.js"></script>
+</body>
 </html>
