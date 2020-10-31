@@ -17,6 +17,6 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ATTESTATION_COVID_294200 }}'
           channelId: live
-          projectId: attestation-covid-294200
+          projectId: attestation-covid-irf
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
