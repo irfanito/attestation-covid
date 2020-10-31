@@ -154,7 +154,7 @@ export function prepareInputs (formInputs, reasonInputs, reasonFieldset, reasonA
 
   jquery('[id^=radio-]').on('click', (event) => {
     const person = window.location.href.match(URL_PATTERN)[1]
-    const move = jquery(event.target).val()
+    const move = jquery(event.target).prop('id').split('-').reverse()[0]
     applyPersonMove(person, move)
   })
 }
