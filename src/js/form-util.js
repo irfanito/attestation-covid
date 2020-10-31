@@ -35,6 +35,8 @@ const conditions = {
   },
 }
 
+const URL_PATTERN = /^https?:\/\/[^/]*\/([^/]*)\/([^/]*)/
+
 function validateAriaFields () {
   return Object.keys(conditions)
     .map((field) => {
@@ -151,20 +153,32 @@ export function prepareInputs (formInputs, reasonInputs, reasonFieldset, reasonA
   })
 
   jquery('[id^=radio-]').on('click', (event) => {
-    const heuresortie = new Date()
-      .toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
-    const move = jquery(event.target).prop('id').replace('radio-', '')
-    jquery('#field-firstname').val(moveData[move].firstname)
-    jquery('#field-lastname').val(moveData[move].lastname)
-    jquery('#field-birthday').val(moveData[move].birthday)
-    jquery('#field-placeofbirth').val(moveData[move].placeofbirth)
-    jquery('#field-address').val(moveData[move].address)
-    jquery('#field-city').val(moveData[move].city)
-    jquery('#field-zipcode').val(moveData[move].zipcode)
-    jquery('#field-heuresortie').val(heuresortie)
-    jquery('[id^=checkbox-]').prop('checked', false)
-    jquery('#checkbox-' + moveData[move].reason).prop('checked', true)
+    const idSplit = jquery(event.target).prop('id').split('-')
+    applyPersonMove(idSplit[1], idSplit[2])
   })
+}
+
+jquery(document).ready(function() {
+  const hrefMatch = window.location.href.match(URL_PATTERN)
+  if (hrefMatch) {
+    applyPersonMove(hrefMatch[1], hrefMatch[2])
+  }
+})
+
+function applyPersonMove (person, move) {
+  const heuresortie = new Date()
+    .toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
+  jquery('#field-firstname').val(moveData.persons[person].firstname)
+  jquery('#field-lastname').val(moveData.persons[person].lastname)
+  jquery('#field-birthday').val(moveData.persons[person].birthday)
+  jquery('#field-placeofbirth').val(moveData.persons[person].placeofbirth)
+  jquery('#field-address').val(moveData.persons[person].address)
+  jquery('#field-city').val(moveData.persons[person].city)
+  jquery('#field-zipcode').val(moveData.persons[person].zipcode)
+  jquery('#field-heuresortie').val(heuresortie)
+  jquery('[id^=checkbox-]').prop('checked', false)
+  jquery('#checkbox-' + moveData.moves[move].reason).prop('checked', true)
+  jquery('#generate-btn').trigger('click')
 }
 
 export function prepareForm () {
