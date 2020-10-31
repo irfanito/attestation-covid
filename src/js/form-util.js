@@ -162,6 +162,7 @@ export function prepareInputs (formInputs, reasonInputs, reasonFieldset, reasonA
     jquery('#field-city').val(moveData[move].city)
     jquery('#field-zipcode').val(moveData[move].zipcode)
     jquery('#field-heuresortie').val(heuresortie)
+    jquery('[id^=checkbox-]').prop('checked', false)
     jquery('#checkbox-' + moveData[move].reason).prop('checked', true)
   })
 }
