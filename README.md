@@ -15,7 +15,7 @@ Vérifiez la version de npm instalée.
 npm -v
 ```
 
-## Immporter le projet
+## Importer le projet
 ```console
 git clone https://github.com/irfanito/attestation-covid.git
 cd attestation-covid
@@ -32,8 +32,14 @@ npm start
 npx serve dist
 ```
 
-#### Builder l'application
+## Builder l'application
 ```console
 npm run build:dev
 ```
-Le code à déployer sera le contenu du dossier `dist`
+Le code à déployer sera le contenu du dossier `dist.`
+
+## Déployer l'application en production
+```console
+firebase login
+firebase deploy
+```
