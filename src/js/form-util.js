@@ -152,11 +152,19 @@ export function prepareInputs (formInputs, reasonInputs, reasonFieldset, reasonA
     }, 6000)
   })
 
-  jquery('[id^=radio-]').on('click', (event) => {
-    const person = window.location.href.match(URL_PATTERN)[1]
-    const move = jquery(event.target).val()
-    applyPersonMove(person, move)
-  })
+  jquery('[id^=radio-]').on('click', handleMoveClick)
+}
+
+function handleMoveClick (event) {
+  applyPersonMove(getPerson(), getMove(event))
+}
+
+function getPerson () {
+  return window.location.href.match(URL_PATTERN)[1]
+}
+
+function getMove (event) {
+  return jquery(event.target).val()
 }
 
 function applyPersonMove (person, move) {
