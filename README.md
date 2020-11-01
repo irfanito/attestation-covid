@@ -1,5 +1,5 @@
 # Générateur de certificat de déplacement
-![example workflow file path](https://github.com/irfanito/attestation-covid/workflows/.github/workflows/main.yml/badge.svg)
+![example workflow file path](https://github.com/irfanito/attestation-covid/workflows/.github/workflows/Continuous%20deployment%20to%20Firebase%20Hosting%20on%20push/badge.svg)
 ## URL de production
 https://attestation-covid-irf.web.app/${identifiantPersonne}
 
