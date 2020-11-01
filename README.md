@@ -5,6 +5,7 @@ https://attestation-covid-irf.web.app/${identifiantPersonne}
 
 ## Vérifier l'environnement de développement
 Ce projet nécessite la présence de [Node.js](https://nodejs.org/en/download/).
+
 Vérifiez la version de [Node.js](https://nodejs.org/en/download/) instalée.
 ```console
 node -v
