@@ -3,7 +3,10 @@
 ## URL de production
 https://attestation-covid-irf.web.app/${identifiantPersonne}
 
+
 ## Importer le projet
+Ce projet nécessite la présence de [Node.js](https://nodejs.org/en/download/).
+
 ```console
 git clone https://github.com/irfanito/attestation-covid.git
 cd attestation-covid
