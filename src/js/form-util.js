@@ -3,7 +3,6 @@ import { jquery } from './jquery.js'
 import { addSlash, getFormattedDate } from './util'
 import pdfBase from '../certificate.pdf'
 import { generatePdf } from './pdf-util'
-import { getPerson } from './database.js'
 
 const conditions = {
   '#field-firstname': {
@@ -140,7 +139,7 @@ export function prepareInputs (formInputs, reasonInputs, reasonFieldset, reasonA
     const creationHour = creationInstant
       .toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
       .replace(':', '-')
-
+    saveFields()
     downloadBlob(pdfBlob, `attestation-${creationDate}_${creationHour}.pdf`)
 
     snackbar.classList.remove('d-none')
@@ -155,34 +154,55 @@ export function prepareInputs (formInputs, reasonInputs, reasonFieldset, reasonA
   jquery('[id^=radio-]').on('click', handleMoveClick)
 }
 
-function handleMoveClick (event) {
-  applyPersonMove(getPersonId(), getMove(event))
+function saveFields () {
+  saveField('firstname')
+  saveField('lastname')
+  saveField('birthday')
+  saveField('placeofbirth')
+  saveField('address')
+  saveField('city')
+  saveField('zipcode')
 }
 
-function getPersonId () {
-  return window.location.href.match(URL_PATTERN)[1]
+function saveField (fieldName) {
+  document.cookie = `attestation-covid-${fieldName}=${jquery('#field-' + fieldName).val()}; expires=Fri, 31 Dec 2021 23:59:59 UTC; path=/`
+}
+
+function handleMoveClick (event) {
+  applyPersonMove(getMove(event))
 }
 
 function getMove (event) {
   return jquery(event.target).val()
 }
 
-function applyPersonMove (personId, move) {
-  getPerson(personId, function (person) {
-    const heuresortie = new Date()
-      .toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
-    jquery('#field-firstname').val(person.firstname)
-    jquery('#field-lastname').val(person.lastname)
-    jquery('#field-birthday').val(person.birthday)
-    jquery('#field-placeofbirth').val(person.placeofbirth)
-    jquery('#field-address').val(person.address)
-    jquery('#field-city').val(person.city)
-    jquery('#field-zipcode').val(person.zipcode)
-    jquery('#field-heuresortie').val(heuresortie)
-    jquery('[id^=checkbox-]').prop('checked', false)
-    jquery('#checkbox-' + move).prop('checked', true)
-    jquery('#generate-btn').trigger('click')
-  })
+function applyPersonMove (move) {
+  const heuresortie = new Date()
+    .toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
+  jquery('#field-firstname').val(getCookieValue('firstname'))
+  jquery('#field-lastname').val(getCookieValue('lastname'))
+  jquery('#field-birthday').val(getCookieValue('birthday'))
+  jquery('#field-placeofbirth').val(getCookieValue('placeofbirth'))
+  jquery('#field-address').val(getCookieValue('address'))
+  jquery('#field-city').val(getCookieValue('city'))
+  jquery('#field-zipcode').val(getCookieValue('zipcode'))
+  jquery('#field-heuresortie').val(heuresortie)
+  jquery('[id^=checkbox-]').prop('checked', false)
+  jquery('#checkbox-' + move).prop('checked', true)
+  jquery('#generate-btn').trigger('click')
+}
+
+function getCookieValue (cookieName) {
+  const cookiePrefix = `attestation-covid-${cookieName}=`
+  const optionalCookieValues = document.cookie.split(';')
+    .map(cookie => cookie.trim())
+    .filter(s => s.startsWith(cookiePrefix))
+    .map(s => s.replace(cookiePrefix, ''))
+  let cookieValue = ''
+  if (optionalCookieValues.length > 0) {
+    cookieValue = optionalCookieValues[0]
+  }
+  return cookieValue
 }
 
 export function prepareForm () {
