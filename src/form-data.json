@@ -15,6 +15,18 @@
         {
           "code": "sport_animaux",
           "label": "Sport"
+        },
+        {
+          "code": "famille",
+          "label": "Famille"
+        },
+        {
+          "code": "sante",
+          "label": "Docteur"
+        },
+        {
+          "code": "travail",
+          "label": "Travail"
         }
       ]
     },
