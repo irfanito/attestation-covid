@@ -34,8 +34,6 @@ const conditions = {
   },
 }
 
-const URL_PATTERN = /^https?:\/\/[^/]*\/([^/]*)/
-
 function validateAriaFields () {
   return Object.keys(conditions)
     .map((field) => {
@@ -139,7 +137,7 @@ export function prepareInputs (formInputs, reasonInputs, reasonFieldset, reasonA
     const creationHour = creationInstant
       .toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
       .replace(':', '-')
-    saveFields()
+    savePerson()
     downloadBlob(pdfBlob, `attestation-${creationDate}_${creationHour}.pdf`)
 
     snackbar.classList.remove('d-none')
@@ -154,55 +152,77 @@ export function prepareInputs (formInputs, reasonInputs, reasonFieldset, reasonA
   jquery('[id^=radio-]').on('click', handleMoveClick)
 }
 
-function saveFields () {
-  saveField('firstname')
-  saveField('lastname')
-  saveField('birthday')
-  saveField('placeofbirth')
-  saveField('address')
-  saveField('city')
-  saveField('zipcode')
+function getInput (inputName) {
+  return jquery(`#field-${inputName}`)
 }
 
-function saveField (fieldName) {
-  document.cookie = `attestation-covid-${fieldName}=${jquery('#field-' + fieldName).val()}; expires=Fri, 31 Dec 2021 23:59:59 UTC; path=/`
+function getProperty (propertyName) {
+  return getInput(propertyName).val()
 }
 
-function handleMoveClick (event) {
-  applyPersonMove(getMove(event))
+function createEmptyPerson () {
+  return {
+    firstname: '',
+    lastname: '',
+    birthday: '',
+    placeofbirth: '',
+    address: '',
+    city: '',
+    zipcode: '',
+  }
+}
+
+function createPerson () {
+  return {
+    firstname: getProperty('firstname'),
+    lastname: getProperty('lastname'),
+    birthday: getProperty('birthday'),
+    placeofbirth: getProperty('placeofbirth'),
+    address: getProperty('address'),
+    city: getProperty('city'),
+    zipcode: getProperty('zipcode'),
+  }
+}
+
+function savePerson () {
+  document.cookie = `attestation-covid-person=${JSON.stringify(createPerson())};expires=Fri, 31 Dec 2021 23:59:59 UTC;path=/`
 }
 
 function getMove (event) {
   return jquery(event.target).val()
 }
 
-function applyPersonMove (move) {
+function getPersonCookieValue () {
+  const optionalPersonCookieValue = document.cookie.match(/attestation-covid-person=([^;]*)/)
+  return !optionalPersonCookieValue ? '' : optionalPersonCookieValue[1]
+}
+
+function getPerson () {
+  return !getPersonCookieValue() ? createEmptyPerson() : JSON.parse(getPersonCookieValue())
+}
+
+function updateFormFromPerson (person) {
+  getInput('firstname').val(person.firstname)
+  getInput('lastname').val(person.lastname)
+  getInput('birthday').val(person.birthday)
+  getInput('placeofbirth').val(person.placeofbirth)
+  getInput('address').val(person.address)
+  getInput('city').val(person.city)
+  getInput('zipcode').val(person.zipcode)
+}
+
+function updateFormFromMove (move) {
   const heuresortie = new Date()
     .toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
-  jquery('#field-firstname').val(getCookieValue('firstname'))
-  jquery('#field-lastname').val(getCookieValue('lastname'))
-  jquery('#field-birthday').val(getCookieValue('birthday'))
-  jquery('#field-placeofbirth').val(getCookieValue('placeofbirth'))
-  jquery('#field-address').val(getCookieValue('address'))
-  jquery('#field-city').val(getCookieValue('city'))
-  jquery('#field-zipcode').val(getCookieValue('zipcode'))
-  jquery('#field-heuresortie').val(heuresortie)
+  getInput('heuresortie').val(heuresortie)
   jquery('[id^=checkbox-]').prop('checked', false)
   jquery('#checkbox-' + move).prop('checked', true)
   jquery('#generate-btn').trigger('click')
 }
 
-function getCookieValue (cookieName) {
-  const cookiePrefix = `attestation-covid-${cookieName}=`
-  const optionalCookieValues = document.cookie.split(';')
-    .map(cookie => cookie.trim())
-    .filter(s => s.startsWith(cookiePrefix))
-    .map(s => s.replace(cookiePrefix, ''))
-  let cookieValue = ''
-  if (optionalCookieValues.length > 0) {
-    cookieValue = optionalCookieValues[0]
-  }
-  return cookieValue
+function handleMoveClick (event) {
+  updateFormFromPerson(getPerson())
+  updateFormFromMove(getMove(event))
 }
 
 export function prepareForm () {

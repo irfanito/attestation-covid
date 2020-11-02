@@ -8,7 +8,7 @@ import { $, appendTo, createElement } from './dom-utils'
 
 const createTitle = () => {
   const h2 = createElement('h2', { className: 'titre-2', innerHTML: 'Remplissez en ligne votre déclaration numérique : ' })
-  const p = createElement('p', { className: 'msg-info', innerHTML: 'Tous les champs sont obligatoires.' })
+  const p = createElement('p', { className: 'msg-info', innerHTML: 'Tous les champs sont obligatoires.<br/>Vous pouvez effacer vos données personnelles en supprimant de votre navigateur les cookies de ce site.' })
   return [h2, p]
 }
 // createElement('div', { className: 'form-group' })
