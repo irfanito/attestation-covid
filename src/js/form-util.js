@@ -215,8 +215,12 @@ function updateFormFromMove (move) {
   const heuresortie = new Date()
     .toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
   getInput('heuresortie').val(heuresortie)
-  jquery('[id^=checkbox-]').prop('checked', false)
+  jquery('input[id^=checkbox-]').prop('checked', false)
   jquery('#checkbox-' + move).prop('checked', true)
+  if (
+    jquery('input[id^=field-]').val().length === 0) {
+    return
+  }
   jquery('#generate-btn').trigger('click')
 }
 
