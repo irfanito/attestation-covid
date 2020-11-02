@@ -1,7 +1,7 @@
 # Générateur de certificat de déplacement
 ![example workflow file path](https://github.com/irfanito/attestation-covid/workflows/Continuous%20deployment%20to%20Firebase%20Hosting%20on%20push/badge.svg)
 ## URL de production
-https://attestation-covid-irf.web.app/${identifiantPersonne}
+https://attestation-covid-irf.web.app
 
 ## Vérifier l'environnement de développement
 Ce projet nécessite la présence de [Node.js](https://nodejs.org/en/download/).
