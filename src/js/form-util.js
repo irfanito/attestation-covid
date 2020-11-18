@@ -150,6 +150,7 @@ export function prepareInputs (formInputs, reasonInputs, reasonFieldset, reasonA
   })
 
   jquery('[id^=radio-]').on('click', handleMoveClick)
+  jquery(initForm)
 }
 
 function getInput (inputName) {
@@ -201,7 +202,8 @@ function getPerson () {
   return !getPersonCookieValue() ? createEmptyPerson() : JSON.parse(getPersonCookieValue())
 }
 
-function updateFormFromPerson (person) {
+function initPerson () {
+  const person = getPerson()
   getInput('firstname').val(person.firstname)
   getInput('lastname').val(person.lastname)
   getInput('birthday').val(person.birthday)
@@ -211,10 +213,13 @@ function updateFormFromPerson (person) {
   getInput('zipcode').val(person.zipcode)
 }
 
-function updateFormFromMove (move) {
+function initHeureSortie () {
   const heuresortie = new Date()
     .toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
   getInput('heuresortie').val(heuresortie)
+}
+
+function updateFormFromMove (move) {
   jquery('input[id^=checkbox-]').prop('checked', false)
   jquery('#checkbox-' + move).prop('checked', true)
   if (
@@ -224,8 +229,12 @@ function updateFormFromMove (move) {
   jquery('#generate-btn').trigger('click')
 }
 
+function initForm (event) {
+  initPerson()
+  initHeureSortie()
+}
+
 function handleMoveClick (event) {
-  updateFormFromPerson(getPerson())
   updateFormFromMove(getMove(event))
 }
 
